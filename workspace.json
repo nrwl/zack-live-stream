@@ -1,8 +1,252 @@
 {
   "version": 1,
-  "projects": {},
+  "projects": {
+    "our-circle-web-client": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/our-circle-web-client",
+      "sourceRoot": "apps/our-circle-web-client/src",
+      "prefix": "our-circle",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/our-circle-web-client",
+            "index": "apps/our-circle-web-client/src/index.html",
+            "main": "apps/our-circle-web-client/src/main.ts",
+            "polyfills": "apps/our-circle-web-client/src/polyfills.ts",
+            "tsConfig": "apps/our-circle-web-client/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/our-circle-web-client/src/favicon.ico",
+              "apps/our-circle-web-client/src/assets"
+            ],
+            "styles": ["apps/our-circle-web-client/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/our-circle-web-client/src/environments/environment.ts",
+                  "with": "apps/our-circle-web-client/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "our-circle-web-client:build",
+            "proxyConfig": "apps/our-circle-web-client/proxy.conf.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "our-circle-web-client:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "our-circle-web-client:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/our-circle-web-client/tsconfig.app.json",
+              "apps/our-circle-web-client/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/our-circle-web-client/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/our-circle-web-client/jest.config.js",
+            "tsConfig": "apps/our-circle-web-client/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/our-circle-web-client/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "our-circle-web-client-e2e": {
+      "root": "apps/our-circle-web-client-e2e",
+      "sourceRoot": "apps/our-circle-web-client-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/our-circle-web-client-e2e/cypress.json",
+            "tsConfig": "apps/our-circle-web-client-e2e/tsconfig.e2e.json",
+            "devServerTarget": "our-circle-web-client:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "our-circle-web-client:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/our-circle-web-client-e2e/tsconfig.e2e.json"],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/our-circle-web-client-e2e/**/*"
+            ]
+          }
+        }
+      }
+    },
+    "our-circle-api": {
+      "root": "apps/our-circle-api",
+      "sourceRoot": "apps/our-circle-api/src",
+      "projectType": "application",
+      "prefix": "our-circle-api",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/our-circle-api",
+            "main": "apps/our-circle-api/src/main.ts",
+            "tsConfig": "apps/our-circle-api/tsconfig.app.json",
+            "assets": ["apps/our-circle-api/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/our-circle-api/src/environments/environment.ts",
+                  "with": "apps/our-circle-api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "our-circle-api:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/our-circle-api/tsconfig.app.json",
+              "apps/our-circle-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/our-circle-api/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/our-circle-api/jest.config.js",
+            "tsConfig": "apps/our-circle-api/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "content-post-utils": {
+      "root": "libs/content-post-utils",
+      "sourceRoot": "libs/content-post-utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/content-post-utils/tsconfig.lib.json",
+              "libs/content-post-utils/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/content-post-utils/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/content-post-utils/jest.config.js",
+            "tsConfig": "libs/content-post-utils/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "backend-content-posts": {
+      "root": "libs/backend/content-posts",
+      "sourceRoot": "libs/backend/content-posts/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/backend/content-posts/tsconfig.lib.json",
+              "libs/backend/content-posts/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/backend/content-posts/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/backend/content-posts/jest.config.js",
+            "tsConfig": "libs/backend/content-posts/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
+    "defaultCollection": "@nrwl/angular"
   },
   "schematics": {
     "@nrwl/workspace": {
@@ -61,6 +305,14 @@
       "library": {
         "linter": "eslint"
       }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
     }
-  }
+  },
+  "defaultProject": "our-circle-web-client"
 }
