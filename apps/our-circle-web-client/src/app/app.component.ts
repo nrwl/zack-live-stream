@@ -8,11 +8,4 @@ import { Observable, of } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  working$: Observable<boolean> = this._httpClient.get('/api').pipe(
-    map(() => true),
-    catchError(() => of(false))
-  );
-
-  constructor(private _httpClient: HttpClient) {}
-}
+export class AppComponent {}

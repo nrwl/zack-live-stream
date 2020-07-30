@@ -5,7 +5,7 @@ const app = express();
 const port = 3333;
 const router = express.Router();
 
-router.get('', (req, res) => res.status(200).send());
+router.get('', (req, res) => res.status(200).send()); // TODO: remove
 router.use('/content-posts', contentPostRouter);
 
 app.use('/api', router);

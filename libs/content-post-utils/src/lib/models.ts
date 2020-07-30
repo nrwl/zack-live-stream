@@ -4,3 +4,7 @@ export interface ContentPost {
   authorId: string;
   created: Date;
 }
+
+export interface CreateContentPostRequestBody {
+  content: string;
+}

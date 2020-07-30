@@ -21,6 +21,9 @@
       ],
       "@zack-live-stream/backend/content-posts": [
         "libs/backend/content-posts/src/index.ts"
+      ],
+      "@zack-live-stream/frontend/content-posts": [
+        "libs/frontend/content-posts/src/index.ts"
       ]
     }
   },

@@ -40,6 +40,9 @@
     },
     "backend-content-posts": {
       "tags": []
+    },
+    "frontend-content-posts": {
+      "tags": []
     }
   }
 }

@@ -1,0 +1,5 @@
+<form (ngSubmit)="submit()">
+  <label for="createPost">Create a Post:</label>
+  <textarea id="createPost" [formControl]="createPostControl"></textarea>
+  <button type="submit" [disabled]="!createPostControl.valid">Submit</button>
+</form>

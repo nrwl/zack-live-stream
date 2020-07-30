@@ -1,1 +1,1 @@
-export * from './lib/backend-content-posts';
+export { router } from './lib/router';

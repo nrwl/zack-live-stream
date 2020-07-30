@@ -243,6 +243,41 @@
           }
         }
       }
+    },
+    "frontend-content-posts": {
+      "projectType": "library",
+      "root": "libs/frontend/content-posts",
+      "sourceRoot": "libs/frontend/content-posts/src",
+      "prefix": "our-circle",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/frontend/content-posts/tsconfig.lib.json",
+              "libs/frontend/content-posts/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/frontend/content-posts/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/frontend/content-posts/jest.config.js",
+            "tsConfig": "libs/frontend/content-posts/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/frontend/content-posts/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {
