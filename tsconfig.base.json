@@ -24,6 +24,9 @@
       ],
       "@zack-live-stream/frontend/content-posts": [
         "libs/frontend/content-posts/src/index.ts"
+      ],
+      "@zack-live-stream/frontend/our-circle-web-client-actions": [
+        "libs/frontend/our-circle-web-client-actions/src/index.ts"
       ]
     }
   },

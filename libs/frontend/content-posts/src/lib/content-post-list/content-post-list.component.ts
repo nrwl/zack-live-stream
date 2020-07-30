@@ -2,16 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ContentPost } from '@zack-live-stream/content-post-utils';
 import { Observable } from 'rxjs';
+import { ContentPostService } from '../content-post.service';
+import { Store, select } from '@ngrx/store';
+import {
+  initContentPostList,
+  selectAllPosts,
+} from '@zack-live-stream/frontend/our-circle-web-client-actions';
 
 @Component({
   selector: 'our-circle-content-post-list',
   templateUrl: './content-post-list.component.html',
   styleUrls: ['./content-post-list.component.scss'],
 })
-export class ContentPostListComponent {
-  list$: Observable<ContentPost[]> = this._http.get<ContentPost[]>(
-    '/api/content-posts'
-  );
+export class ContentPostListComponent implements OnInit {
+  list$: Observable<ContentPost[]> = this._store.pipe(select(selectAllPosts));
 
-  constructor(private _http: HttpClient) {}
+  constructor(private _store: Store) {}
+
+  ngOnInit() {
+    this._store.dispatch(initContentPostList());
+  }
 }

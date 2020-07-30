@@ -1,24 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnDestroy } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { ContentPost } from '@zack-live-stream/content-post-utils';
-import { CreateContentPostRequestBody } from 'libs/content-post-utils/src/lib/models';
+import { Actions, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
+import {
+  createNewContentPostSucceeds,
+  requestCreateNewContentPost,
+} from '@zack-live-stream/frontend/our-circle-web-client-actions';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'our-circle-create-content-post',
   templateUrl: './create-content-post.component.html',
   styleUrls: ['./create-content-post.component.scss'],
 })
-export class CreateContentPostComponent {
+export class CreateContentPostComponent implements OnDestroy {
+  private _destorying$ = new Subject<void>();
   createPostControl = new FormControl('', [Validators.required]);
 
-  constructor(private _http: HttpClient) {}
+  constructor(private _store: Store, private _actions: Actions) {
+    this._actions
+      .pipe(takeUntil(this._destorying$), ofType(createNewContentPostSucceeds))
+      .subscribe(() => this.createPostControl.reset());
+  }
 
   submit() {
-    this._http
-      .post<ContentPost>('/api/content-posts/create-post', {
-        content: this.createPostControl.value as string,
+    this._store.dispatch(
+      requestCreateNewContentPost({
+        requestBody: { content: this.createPostControl.value },
       })
-      .subscribe();
+    );
+  }
+
+  ngOnDestroy() {
+    this._destorying$.next();
   }
 }

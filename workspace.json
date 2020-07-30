@@ -278,6 +278,36 @@
           "style": "scss"
         }
       }
+    },
+    "frontend-our-circle-web-client-actions": {
+      "root": "libs/frontend/our-circle-web-client-actions",
+      "sourceRoot": "libs/frontend/our-circle-web-client-actions/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/frontend/our-circle-web-client-actions/tsconfig.lib.json",
+              "libs/frontend/our-circle-web-client-actions/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/frontend/our-circle-web-client-actions/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/frontend/our-circle-web-client-actions/jest.config.js",
+            "tsConfig": "libs/frontend/our-circle-web-client-actions/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

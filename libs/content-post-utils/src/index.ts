@@ -1,1 +1,1 @@
-export { ContentPost } from './lib/models';
+export { ContentPost, CreateContentPostRequestBody } from './lib/models';
