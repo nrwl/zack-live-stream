@@ -308,6 +308,33 @@
           }
         }
       }
+    },
+    "backend-mongo": {
+      "root": "libs/backend/mongo",
+      "sourceRoot": "libs/backend/mongo/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/backend/mongo/tsconfig.lib.json",
+              "libs/backend/mongo/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/backend/mongo/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/backend/mongo/jest.config.js",
+            "tsConfig": "libs/backend/mongo/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

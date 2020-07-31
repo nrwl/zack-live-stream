@@ -1,12 +1,20 @@
 import { RequestHandler } from 'express';
-import { posts } from './posts';
+import { mongo } from '@zack-live-stream/backend/mongo';
+import { ObjectId } from 'mongodb';
+import {
+  MongoContentPost,
+  convertToContentPost,
+} from '@zack-live-stream/content-post-utils';
 
-export const getPostById: RequestHandler = (req, res) => {
+export const getPostById: RequestHandler = async (req, res) => {
   const { id } = req.params;
-  console.log(id);
-  const matchingPost = posts.find((post) => post.id === id);
+  const matchingPost = await mongo
+    .collection<MongoContentPost>('content-posts')
+    .findOne({
+      _id: new ObjectId(id),
+    });
   if (matchingPost) {
-    res.send(matchingPost);
+    res.send(convertToContentPost(matchingPost));
   } else {
     res.status(404).send();
   }

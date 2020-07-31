@@ -1,6 +1,14 @@
 import { RequestHandler } from 'express';
-import { posts } from './posts';
+import { mongo } from '@zack-live-stream/backend/mongo';
+import {
+  MongoContentPost,
+  convertToContentPost,
+} from '@zack-live-stream/content-post-utils';
 
-export const getPosts: RequestHandler = (req, res) => {
-  res.send(posts);
+export const getPosts: RequestHandler = async (req, res) => {
+  const mongoPosts = await mongo
+    .collection<MongoContentPost>('content-posts')
+    .find()
+    .toArray();
+  res.send(mongoPosts.map(convertToContentPost));
 };
