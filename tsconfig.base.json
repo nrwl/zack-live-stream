@@ -28,7 +28,9 @@
       "@zack-live-stream/frontend/our-circle-web-client-actions": [
         "libs/frontend/our-circle-web-client-actions/src/index.ts"
       ],
-      "@zack-live-stream/backend/mongo": ["libs/backend/mongo/src/index.ts"]
+      "@zack-live-stream/backend/mongo": ["libs/backend/mongo/src/index.ts"],
+      "@zack-live-stream/backend/auth": ["libs/backend/auth/src/index.ts"],
+      "@zack-live-stream/frontend/auth": ["libs/frontend/auth/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

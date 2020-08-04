@@ -49,6 +49,12 @@
     },
     "backend-mongo": {
       "tags": []
+    },
+    "backend-auth": {
+      "tags": []
+    },
+    "frontend-auth": {
+      "tags": []
     }
   }
 }
