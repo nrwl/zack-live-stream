@@ -18,7 +18,12 @@
       "runner": "@nrwl/nx-cloud",
       "options": {
         "accessToken": "ZTg5YmU3ZjUtYWIxYi00MGE0LTllY2QtNTc4ZDNkNzM1Y2UzfHJlYWQtd3JpdGU=",
-        "cacheableOperations": ["build", "test", "lint", "e2e"],
+        "cacheableOperations": [
+          "build",
+          "test",
+          "lint",
+          "e2e"
+        ],
         "canTrackAnalytics": false,
         "showUsageWarnings": true
       }
@@ -30,7 +35,9 @@
     },
     "our-circle-web-client-e2e": {
       "tags": [],
-      "implicitDependencies": ["our-circle-web-client"]
+      "implicitDependencies": [
+        "our-circle-web-client"
+      ]
     },
     "our-circle-api": {
       "tags": []
@@ -54,6 +61,18 @@
       "tags": []
     },
     "frontend-auth": {
+      "tags": []
+    },
+    "todos-web-client": {
+      "tags": []
+    },
+    "todos-web-client-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "todos-web-client"
+      ]
+    },
+    "todos-api": {
       "tags": []
     }
   }
