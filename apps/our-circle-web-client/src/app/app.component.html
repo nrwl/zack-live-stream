@@ -1,5 +1,18 @@
 <h1>Our Circle</h1>
 
-<our-circle-login></our-circle-login>
-<our-circle-create-content-post></our-circle-create-content-post>
-<our-circle-content-post-list></our-circle-content-post-list>
+<ng-container *ngIf="loggedIn$ | async as loggedIn">
+  <our-circle-login
+    *ngIf="
+      loggedIn === 'not attempted' || loggedIn === 'pending';
+      else userName
+    "
+  ></our-circle-login>
+  <ng-template #userName>
+    <h2>{{ (user$ | async).name }}</h2>
+    <button (click)="logout()">Logout</button>
+  </ng-template>
+</ng-container>
+<ng-container *ngIf="(loggedIn$ | async) === 'logged in'">
+  <our-circle-create-content-post></our-circle-create-content-post>
+  <our-circle-content-post-list></our-circle-content-post-list>
+</ng-container>

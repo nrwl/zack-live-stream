@@ -1,4 +1,4 @@
-import { WithId } from 'mongodb';
+import { WithId, ObjectId } from 'mongodb';
 
 export interface ContentPost {
   id: string;
@@ -13,7 +13,7 @@ export interface CreateContentPostRequestBody {
 
 export type MongoContentPost = WithId<{
   content: string;
-  authorId: string;
+  authorId: ObjectId;
   created: Date;
 }>;
 
@@ -22,6 +22,6 @@ export const convertToContentPost = (
 ): ContentPost => ({
   id: mongoContentPost._id.toHexString(),
   content: mongoContentPost.content,
-  authorId: mongoContentPost.authorId,
+  authorId: mongoContentPost.authorId.toHexString(),
   created: mongoContentPost.created,
 });

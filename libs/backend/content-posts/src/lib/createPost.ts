@@ -4,14 +4,14 @@ import {
   MongoContentPost,
 } from 'libs/content-post-utils/src/lib/models';
 import { mongo } from '@zack-live-stream/backend/mongo';
-
-const AUTHOR_ID = '1';
+import { MongoUser } from '@zack-live-stream/content-post-utils';
 
 export const createPost: RequestHandler = async (req, res) => {
   const { content } = req.body as CreateContentPostRequestBody;
+  const user = (req as any).user as MongoUser;
   const newPost = {
     content,
-    authorId: AUTHOR_ID,
+    authorId: user._id,
     created: new Date(),
   };
   const id = (
@@ -19,7 +19,7 @@ export const createPost: RequestHandler = async (req, res) => {
   ).insertedId.toHexString();
   res.send({
     content: newPost.content,
-    authorId: newPost.authorId,
+    authorId: newPost.authorId.toHexString(),
     created: newPost.created,
     id,
   });

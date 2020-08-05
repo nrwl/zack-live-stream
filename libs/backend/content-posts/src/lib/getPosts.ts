@@ -10,5 +10,6 @@ export const getPosts: RequestHandler = async (req, res) => {
     .collection<MongoContentPost>('content-posts')
     .find()
     .toArray();
+  console.log(mongoPosts);
   res.send(mongoPosts.map(convertToContentPost));
 };

@@ -26,6 +26,10 @@ export class AuthService {
       );
   }
 
+  logout(): Observable<void> {
+    return this._httpClient.post<void>('/api/auth/logout', {});
+  }
+
   getAccessToken() {
     return localStorage.getItem(ACCESS_TOKEN_KEY);
   }
