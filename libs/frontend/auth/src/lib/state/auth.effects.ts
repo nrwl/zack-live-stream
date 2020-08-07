@@ -8,7 +8,7 @@ import {
   submitLogout,
   logoutSucceeded,
   logoutFailed,
-} from '@zack-live-stream/frontend/our-circle-web-client-actions';
+} from '@zack-live-stream/frontend/auth-ngrx-utils';
 import { switchMap, catchError, map, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 

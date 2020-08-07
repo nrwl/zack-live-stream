@@ -25,9 +25,7 @@
               "apps/our-circle-web-client/src/favicon.ico",
               "apps/our-circle-web-client/src/assets"
             ],
-            "styles": [
-              "apps/our-circle-web-client/src/styles.scss"
-            ],
+            "styles": ["apps/our-circle-web-client/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -124,9 +122,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/our-circle-web-client-e2e/tsconfig.e2e.json"
-            ],
+            "tsConfig": ["apps/our-circle-web-client-e2e/tsconfig.e2e.json"],
             "exclude": [
               "**/node_modules/**",
               "!apps/our-circle-web-client-e2e/**/*"
@@ -148,9 +144,7 @@
             "outputPath": "dist/apps/our-circle-api",
             "main": "apps/our-circle-api/src/main.ts",
             "tsConfig": "apps/our-circle-api/tsconfig.app.json",
-            "assets": [
-              "apps/our-circle-api/src/assets"
-            ]
+            "assets": ["apps/our-circle-api/src/assets"]
           },
           "configurations": {
             "production": {
@@ -180,10 +174,7 @@
               "apps/our-circle-api/tsconfig.app.json",
               "apps/our-circle-api/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/our-circle-api/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/our-circle-api/**/*"]
           }
         },
         "test": {
@@ -210,10 +201,7 @@
               "libs/content-post-utils/tsconfig.lib.json",
               "libs/content-post-utils/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/content-post-utils/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/content-post-utils/**/*"]
           }
         },
         "test": {
@@ -291,36 +279,6 @@
         }
       }
     },
-    "frontend-our-circle-web-client-actions": {
-      "root": "libs/frontend/our-circle-web-client-actions",
-      "sourceRoot": "libs/frontend/our-circle-web-client-actions/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "tsConfig": [
-              "libs/frontend/our-circle-web-client-actions/tsconfig.lib.json",
-              "libs/frontend/our-circle-web-client-actions/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/frontend/our-circle-web-client-actions/**/*"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/frontend/our-circle-web-client-actions/jest.config.js",
-            "tsConfig": "libs/frontend/our-circle-web-client-actions/tsconfig.spec.json",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "backend-mongo": {
       "root": "libs/backend/mongo",
       "sourceRoot": "libs/backend/mongo/src",
@@ -335,10 +293,7 @@
               "libs/backend/mongo/tsconfig.lib.json",
               "libs/backend/mongo/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/backend/mongo/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/backend/mongo/**/*"]
           }
         },
         "test": {
@@ -365,10 +320,7 @@
               "libs/backend/auth/tsconfig.lib.json",
               "libs/backend/auth/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/backend/auth/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/backend/auth/**/*"]
           }
         },
         "test": {
@@ -394,10 +346,7 @@
               "libs/frontend/auth/tsconfig.lib.json",
               "libs/frontend/auth/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/frontend/auth/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/frontend/auth/**/*"]
           }
         },
         "test": {
@@ -440,9 +389,7 @@
               "apps/todos-web-client/src/favicon.ico",
               "apps/todos-web-client/src/assets"
             ],
-            "styles": [
-              "apps/todos-web-client/src/styles.scss"
-            ],
+            "styles": ["apps/todos-web-client/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -501,10 +448,7 @@
               "apps/todos-web-client/tsconfig.app.json",
               "apps/todos-web-client/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/todos-web-client/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/todos-web-client/**/*"]
           }
         },
         "test": {
@@ -539,13 +483,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/todos-web-client-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/todos-web-client-e2e/**/*"
-            ]
+            "tsConfig": ["apps/todos-web-client-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/todos-web-client-e2e/**/*"]
           }
         }
       }
@@ -563,9 +502,7 @@
             "outputPath": "dist/apps/todos-api",
             "main": "apps/todos-api/src/main.ts",
             "tsConfig": "apps/todos-api/tsconfig.app.json",
-            "assets": [
-              "apps/todos-api/src/assets"
-            ]
+            "assets": ["apps/todos-api/src/assets"]
           },
           "configurations": {
             "production": {
@@ -595,10 +532,7 @@
               "apps/todos-api/tsconfig.app.json",
               "apps/todos-api/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/todos-api/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/todos-api/**/*"]
           }
         },
         "test": {
@@ -606,6 +540,123 @@
           "options": {
             "jestConfig": "apps/todos-api/jest.config.js",
             "tsConfig": "apps/todos-api/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "auth-utils": {
+      "root": "libs/auth-utils",
+      "sourceRoot": "libs/auth-utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/auth-utils/tsconfig.lib.json",
+              "libs/auth-utils/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/auth-utils/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/auth-utils/jest.config.js",
+            "tsConfig": "libs/auth-utils/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "frontend-auth-ngrx-utils": {
+      "root": "libs/frontend/auth-ngrx-utils",
+      "sourceRoot": "libs/frontend/auth-ngrx-utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/frontend/auth-ngrx-utils/tsconfig.lib.json",
+              "libs/frontend/auth-ngrx-utils/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/frontend/auth-ngrx-utils/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/frontend/auth-ngrx-utils/jest.config.js",
+            "tsConfig": "libs/frontend/auth-ngrx-utils/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "frontend-our-circle-ngrx-utils": {
+      "root": "libs/frontend/our-circle-ngrx-utils",
+      "sourceRoot": "libs/frontend/our-circle-ngrx-utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/frontend/our-circle-ngrx-utils/tsconfig.lib.json",
+              "libs/frontend/our-circle-ngrx-utils/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/frontend/our-circle-ngrx-utils/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/frontend/our-circle-ngrx-utils/jest.config.js",
+            "tsConfig": "libs/frontend/our-circle-ngrx-utils/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "frontend-todos-ngrx-utils": {
+      "root": "libs/frontend/todos-ngrx-utils",
+      "sourceRoot": "libs/frontend/todos-ngrx-utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/frontend/todos-ngrx-utils/tsconfig.lib.json",
+              "libs/frontend/todos-ngrx-utils/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/frontend/todos-ngrx-utils/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/frontend/todos-ngrx-utils/jest.config.js",
+            "tsConfig": "libs/frontend/todos-ngrx-utils/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }

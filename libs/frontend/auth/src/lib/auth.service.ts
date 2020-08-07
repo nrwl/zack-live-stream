@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {
   LoginRequestBody,
   LoginResponseBody,
-} from '@zack-live-stream/content-post-utils';
+} from '@zack-live-stream/auth-utils';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 

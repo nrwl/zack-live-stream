@@ -1,6 +1,6 @@
 import { RequestHandler } from 'express';
 import { mongo } from '@zack-live-stream/backend/mongo';
-import { MongoAccessToken, User } from '@zack-live-stream/content-post-utils';
+import { MongoAccessToken, User } from '@zack-live-stream/auth-utils';
 import { WithId } from 'mongodb';
 
 export const authorize: RequestHandler = async (req, res, next) => {

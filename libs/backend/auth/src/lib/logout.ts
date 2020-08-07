@@ -1,8 +1,5 @@
 import { RequestHandler } from 'express';
-import {
-  MongoUser,
-  MongoAccessToken,
-} from '@zack-live-stream/content-post-utils';
+import { MongoUser, MongoAccessToken } from '@zack-live-stream/auth-utils';
 import { mongo } from '@zack-live-stream/backend/mongo';
 
 export const logout: RequestHandler = async (req, res) => {

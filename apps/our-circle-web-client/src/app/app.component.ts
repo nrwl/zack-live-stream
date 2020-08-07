@@ -7,7 +7,7 @@ import {
   selectLoggedIn,
   selectLoggedInUser,
   submitLogout,
-} from '@zack-live-stream/frontend/our-circle-web-client-actions';
+} from '@zack-live-stream/frontend/our-circle-ngrx-utils';
 import { User } from '@zack-live-stream/content-post-utils';
 
 @Component({

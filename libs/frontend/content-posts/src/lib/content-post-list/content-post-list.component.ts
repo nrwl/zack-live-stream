@@ -7,7 +7,7 @@ import { Store, select } from '@ngrx/store';
 import {
   initContentPostList,
   selectAllPosts,
-} from '@zack-live-stream/frontend/our-circle-web-client-actions';
+} from '@zack-live-stream/frontend/our-circle-ngrx-utils';
 
 @Component({
   selector: 'our-circle-content-post-list',

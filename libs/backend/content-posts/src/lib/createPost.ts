@@ -4,7 +4,7 @@ import {
   MongoContentPost,
 } from 'libs/content-post-utils/src/lib/models';
 import { mongo } from '@zack-live-stream/backend/mongo';
-import { MongoUser } from '@zack-live-stream/content-post-utils';
+import { MongoUser } from '@zack-live-stream/auth-utils';
 
 export const createPost: RequestHandler = async (req, res) => {
   const { content } = req.body as CreateContentPostRequestBody;

@@ -1,13 +1,13 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Store, select } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
+import { User } from '@zack-live-stream/auth-utils';
 import {
   selectLoggedIn,
   selectLoggedInUser,
   submitLogout,
-} from '@zack-live-stream/frontend/our-circle-web-client-actions';
-import { User } from '@zack-live-stream/content-post-utils';
+} from '@zack-live-stream/frontend/todos-ngrx-utils';
+import { Observable } from 'rxjs';
 
 type ToDo = { task: string; completed: boolean };
 

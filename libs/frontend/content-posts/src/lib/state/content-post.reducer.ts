@@ -7,7 +7,7 @@ import {
   createNewContentPostSucceeds,
   contentPostEntityAdapter,
   getContentPostsSucceeds,
-} from '@zack-live-stream/frontend/our-circle-web-client-actions';
+} from '@zack-live-stream/frontend/our-circle-ngrx-utils';
 
 export const reducer = createReducer<EntityState<ContentPost>>(
   contentPostInitialState,

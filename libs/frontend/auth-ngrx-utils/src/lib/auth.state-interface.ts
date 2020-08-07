@@ -1,4 +1,4 @@
-import { User } from '@zack-live-stream/content-post-utils';
+import { User } from '@zack-live-stream/auth-utils';
 
 export interface AuthState {
   loggedIn: 'not attempted' | 'pending' | 'logged in';

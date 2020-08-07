@@ -7,7 +7,7 @@ import {
   submitLogout,
   logoutFailed,
   logoutSucceeded,
-} from '@zack-live-stream/frontend/our-circle-web-client-actions';
+} from '@zack-live-stream/frontend/auth-ngrx-utils';
 
 export const reducer = createReducer<AuthState>(
   { loggedIn: 'not attempted', user: null },

@@ -1,5 +1,5 @@
 import { createSelector, createAction, props } from '@ngrx/store';
-import { User } from '@zack-live-stream/content-post-utils';
+import { User } from '@zack-live-stream/auth-utils';
 
 export const submitLoginForm = createAction(
   '[Login Form] Submit',

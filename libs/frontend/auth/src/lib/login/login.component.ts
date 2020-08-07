@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../auth.service';
 import { Store } from '@ngrx/store';
-import { submitLoginForm } from '@zack-live-stream/frontend/our-circle-web-client-actions';
+import { submitLoginForm } from '@zack-live-stream/frontend/auth-ngrx-utils';
 
 @Component({
   selector: 'our-circle-login',

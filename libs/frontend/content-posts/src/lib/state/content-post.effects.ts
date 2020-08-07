@@ -9,7 +9,7 @@ import {
   getContentPostsSucceeds,
   getContentPostsFails,
   loginSucceeded,
-} from '@zack-live-stream/frontend/our-circle-web-client-actions';
+} from '@zack-live-stream/frontend/our-circle-ngrx-utils';
 import { map, catchError, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 

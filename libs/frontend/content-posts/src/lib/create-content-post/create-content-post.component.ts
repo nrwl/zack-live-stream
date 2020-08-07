@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import {
   createNewContentPostSucceeds,
   requestCreateNewContentPost,
-} from '@zack-live-stream/frontend/our-circle-web-client-actions';
+} from '@zack-live-stream/frontend/our-circle-ngrx-utils';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

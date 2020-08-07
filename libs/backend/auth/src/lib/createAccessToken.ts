@@ -1,8 +1,5 @@
 import { mongo } from '@zack-live-stream/backend/mongo';
-import {
-  MongoAccessToken,
-  MongoUser,
-} from '@zack-live-stream/content-post-utils';
+import { MongoAccessToken, MongoUser } from '@zack-live-stream/auth-utils';
 import { v4 as uuid } from 'uuid';
 
 export const createAccessToken = async (user: MongoUser) => {
