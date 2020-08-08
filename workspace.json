@@ -71,6 +71,15 @@
             }
           }
         },
+        "serve-with-api": {
+          "builder": "@angular-devkit/architect:allOf",
+          "options": {
+            "targets": [
+              { "target": "our-circle-web-client:serve" },
+              { "target": "our-circle-api:serve" }
+            ]
+          }
+        },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
@@ -111,7 +120,8 @@
           "options": {
             "cypressConfig": "apps/our-circle-web-client-e2e/cypress.json",
             "tsConfig": "apps/our-circle-web-client-e2e/tsconfig.e2e.json",
-            "devServerTarget": "our-circle-web-client:serve"
+            "devServerTarget": "our-circle-web-client:serve-with-api",
+            "baseUrl": "http://localhost:4200"
           },
           "configurations": {
             "production": {

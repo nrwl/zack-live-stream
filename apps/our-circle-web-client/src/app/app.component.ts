@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map, catchError } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
-import { Store, select } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
+import { User } from '@zack-live-stream/auth-utils';
 import {
   selectLoggedIn,
   selectLoggedInUser,
   submitLogout,
 } from '@zack-live-stream/frontend/our-circle-ngrx-utils';
-import { User } from '@zack-live-stream/content-post-utils';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'our-circle-root',

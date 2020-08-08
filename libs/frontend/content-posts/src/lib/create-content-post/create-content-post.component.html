@@ -1,5 +1,11 @@
 <form (ngSubmit)="submit()">
   <label for="createPost">Create a Post:</label>
   <textarea id="createPost" [formControl]="createPostControl"></textarea>
-  <button type="submit" [disabled]="!createPostControl.valid">Submit</button>
+  <button
+    type="submit"
+    [disabled]="!createPostControl.valid"
+    e2e-tag="createPostButton"
+  >
+    Submit
+  </button>
 </form>

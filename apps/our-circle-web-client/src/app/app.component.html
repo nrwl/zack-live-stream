@@ -9,7 +9,7 @@
   ></our-circle-login>
   <ng-template #userName>
     <h2>{{ (user$ | async).name }}</h2>
-    <button (click)="logout()">Logout</button>
+    <button (click)="logout()" e2e-tag="logoutButton">Logout</button>
   </ng-template>
 </ng-container>
 <ng-container *ngIf="(loggedIn$ | async) === 'logged in'">

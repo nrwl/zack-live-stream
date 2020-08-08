@@ -16,5 +16,5 @@ router.use('/auth', authRouter);
 app.use('/api', router);
 
 app.listen(port, () =>
-  console.log(`Our circle API is listening on port ${port}.`)
+  console.log(`Hi Twitch!!!! Our circle API is listening on port ${port}.`)
 );
