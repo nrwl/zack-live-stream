@@ -8,4 +8,8 @@ const mongoClient = new mongodb.MongoClient('mongodb://127.0.0.1:27017', {
 
 mongoClient.connect();
 
-export const mongo = mongoClient.db('our-circle');
+const databaseName = process.env['MONGO_DB_NAME'];
+
+console.log(`Connecting to database with name: ${databaseName}`);
+
+export const mongo = mongoClient.db(databaseName);
