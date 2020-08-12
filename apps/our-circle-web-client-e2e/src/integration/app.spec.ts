@@ -24,14 +24,55 @@ describe('our-circle-web-client', () => {
     cy.task('seedingForFriendsTest');
     cy.visit('/');
     getGreeting().contains('Our Circle');
+
+    // logging into test user
     cy.get('#username').type('test username');
     cy.get('#password').type('test password');
     cy.get('[e2e-tag="login-submit"]').click();
     cy.get('h2').contains('test name');
+
+    // asserting only has access to friends
+    cy.get('our-circle-friend-list').contains('test friend');
+    cy.get('our-circle-friend-list').should('not.contain', 'test non-friend');
     cy.get('pre').contains('this should be visible');
     cy.get('pre').contains('this should also be visible');
-    // TODO: make sure the 'pre' does NOT contain 'this should not be visible'
-    cy.get('our-circle-friend-list > ul').contains('test friend');
-    // TODO: make sure the friendlist does NOT contain 'test-non-friend'
+    cy.get('pre').should('not.contain', 'this should not be visible');
+
+    // add a post
+    cy.get('#createPost').type('This post was added during our test');
+    cy.get('[e2e-tag="createPostButton"]').click();
+    cy.get('pre').contains('This post was added during our test');
+
+    // logout and back in as our friend user
+    cy.get('[e2e-tag="logoutButton"]').click();
+    cy.get('our-circle-login');
+    cy.get('#username').type('Test Friend');
+    cy.get('#password').type('password');
+    cy.get('[e2e-tag="login-submit"]').click();
+    cy.get('h2').contains('test friend');
+
+    // assert they see all posts, including the newly made one
+    cy.get('our-circle-friend-list').contains('test name');
+    cy.get('our-circle-friend-list').should('not.contain', 'test non-friend');
+    cy.get('pre').contains('this should be visible');
+    cy.get('pre').contains('this should also be visible');
+    cy.get('pre').should('not.contain', 'this should not be visible');
+    cy.get('pre').contains('This post was added during our test');
+
+    // logout and back in as our friend user
+    cy.get('[e2e-tag="logoutButton"]').click();
+    cy.get('our-circle-login');
+    cy.get('#username').type('Not A Friend');
+    cy.get('#password').type('password');
+    cy.get('[e2e-tag="login-submit"]').click();
+    cy.get('h2').contains('test non-friend');
+
+    // assert they see all posts, including the newly made one
+    cy.get('our-circle-friend-list').should('not.contain', 'test name');
+    cy.get('our-circle-friend-list').should('not.contain', 'test non-friend');
+    cy.get('pre').should('not.contain', 'this should be visible');
+    cy.get('pre').should('not.contain', 'this should also be visible');
+    cy.get('pre').should('contain', 'this should not be visible');
+    cy.get('pre').should('not.contain', 'This post was added during our test');
   });
 });

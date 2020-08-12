@@ -7,6 +7,8 @@ import {
   createNewContentPostSucceeds,
   contentPostEntityAdapter,
   getContentPostsSucceeds,
+  loginSucceeded,
+  loginFailed,
 } from '@zack-live-stream/frontend/our-circle-ngrx-utils';
 
 export const reducer = createReducer<EntityState<ContentPost>>(
@@ -16,5 +18,8 @@ export const reducer = createReducer<EntityState<ContentPost>>(
   ),
   on(getContentPostsSucceeds, (state, { response }) =>
     contentPostEntityAdapter.addMany(response, state)
+  ),
+  on(loginSucceeded, loginFailed, (state) =>
+    contentPostEntityAdapter.removeAll(state)
   )
 );
