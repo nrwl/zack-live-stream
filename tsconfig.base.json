@@ -37,6 +37,15 @@
       ],
       "@zack-live-stream/frontend/todos-ngrx-utils": [
         "libs/frontend/todos-ngrx-utils/src/index.ts"
+      ],
+      "@zack-live-stream/frontend/friends": [
+        "libs/frontend/friends/src/index.ts"
+      ],
+      "@zack-live-stream/backend/friends": [
+        "libs/backend/friends/src/index.ts"
+      ],
+      "@zack-live-stream/friendship-utils": [
+        "libs/friendship-utils/src/index.ts"
       ]
     }
   },

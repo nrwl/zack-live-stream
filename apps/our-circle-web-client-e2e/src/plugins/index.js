@@ -13,6 +13,9 @@
 
 const { preprocessTypescript } = require('@nrwl/cypress/plugins/preprocessor');
 const mongodb = require('mongodb');
+import { resetDb } from './tasks/reset-db';
+import { addTestUser } from './tasks/add-test-user';
+import { seedingForFriendsTest } from './tasks/seeding-for-friends-test';
 
 const mongoClient = new mongodb.MongoClient('mongodb://127.0.0.1:27017', {
   useUnifiedTopology: true,
@@ -30,17 +33,8 @@ module.exports = (on, config) => {
   // Preprocess Typescript file using Nx helper
   on('file:preprocessor', preprocessTypescript(config));
   on('task', {
-    async resetDb() {
-      await mongo.dropDatabase();
-      return null;
-    },
-    async addTestUser() {
-      await mongo.collection('users').insertOne({
-        username: 'test username',
-        name: 'test name',
-        password: 'test password',
-      });
-      return null;
-    },
+    resetDb,
+    addTestUser,
+    seedingForFriendsTest,
   });
 };

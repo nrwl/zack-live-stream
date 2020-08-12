@@ -1,0 +1,5 @@
+<ul *ngIf="friends$ | async as friends">
+  <li *ngFor="let friend of friends">
+    {{ friend.name }}
+  </li>
+</ul>

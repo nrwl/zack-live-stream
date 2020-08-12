@@ -74,6 +74,15 @@
     },
     "frontend-todos-ngrx-utils": {
       "tags": []
+    },
+    "frontend-friends": {
+      "tags": []
+    },
+    "backend-friends": {
+      "tags": []
+    },
+    "friendship-utils": {
+      "tags": []
     }
   }
 }

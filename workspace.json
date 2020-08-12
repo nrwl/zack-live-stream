@@ -75,8 +75,12 @@
           "builder": "@angular-devkit/architect:allOf",
           "options": {
             "targets": [
-              { "target": "our-circle-web-client:serve" },
-              { "target": "our-circle-api:serve" }
+              {
+                "target": "our-circle-web-client:serve"
+              },
+              {
+                "target": "our-circle-api:serve"
+              }
             ]
           }
         },
@@ -667,6 +671,92 @@
           "options": {
             "jestConfig": "libs/frontend/todos-ngrx-utils/jest.config.js",
             "tsConfig": "libs/frontend/todos-ngrx-utils/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "frontend-friends": {
+      "projectType": "library",
+      "root": "libs/frontend/friends",
+      "sourceRoot": "libs/frontend/friends/src",
+      "prefix": "our-circle",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/frontend/friends/tsconfig.lib.json",
+              "libs/frontend/friends/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/frontend/friends/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/frontend/friends/jest.config.js",
+            "tsConfig": "libs/frontend/friends/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/frontend/friends/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "backend-friends": {
+      "root": "libs/backend/friends",
+      "sourceRoot": "libs/backend/friends/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/backend/friends/tsconfig.lib.json",
+              "libs/backend/friends/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/backend/friends/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/backend/friends/jest.config.js",
+            "tsConfig": "libs/backend/friends/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "friendship-utils": {
+      "root": "libs/friendship-utils",
+      "sourceRoot": "libs/friendship-utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/friendship-utils/tsconfig.lib.json",
+              "libs/friendship-utils/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/friendship-utils/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/friendship-utils/jest.config.js",
+            "tsConfig": "libs/friendship-utils/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
