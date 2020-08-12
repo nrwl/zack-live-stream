@@ -7,4 +7,4 @@ const mongoClient = new mongodb.MongoClient('mongodb://127.0.0.1:27017', {
 });
 
 mongoClient.connect();
-export const mongo = mongoClient.db('our-circle-e2e');
+module.exports.mongo = mongoClient.db('our-circle-e2e');

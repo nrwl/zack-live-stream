@@ -1,6 +1,6 @@
-import { mongo } from './mongo';
+const { mongo } = require('./mongo');
 
-export async function resetDb() {
+module.exports.resetDb = async function resetDb() {
   await mongo.dropDatabase();
   return null;
-}
+};

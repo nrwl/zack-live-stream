@@ -1,7 +1,6 @@
-import { addTestUser } from './add-test-user';
-import { mongo } from './mongo';
+const { mongo } = require('./mongo');
 
-export async function seedingForFriendsTest() {
+module.exports.seedingForFriendsTest = async function seedingForFriendsTest() {
   const userId = (
     await mongo.collection('users').insertOne({
       username: 'test username',
@@ -43,4 +42,5 @@ export async function seedingForFriendsTest() {
     authorId: nonFriendId,
     created: new Date(),
   });
-}
+  return null;
+};

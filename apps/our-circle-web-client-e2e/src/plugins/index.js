@@ -12,19 +12,9 @@
 // the project's config changing)
 
 const { preprocessTypescript } = require('@nrwl/cypress/plugins/preprocessor');
-const mongodb = require('mongodb');
-import { resetDb } from './tasks/reset-db';
-import { addTestUser } from './tasks/add-test-user';
-import { seedingForFriendsTest } from './tasks/seeding-for-friends-test';
-
-const mongoClient = new mongodb.MongoClient('mongodb://127.0.0.1:27017', {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-  poolSize: 5,
-});
-
-mongoClient.connect();
-const mongo = mongoClient.db('our-circle-e2e');
+const { resetDb } = require('./tasks/reset-db');
+const { addTestUser } = require('./tasks/add-test-user');
+const { seedingForFriendsTest } = require('./tasks/seeding-for-friends-test');
 
 module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
