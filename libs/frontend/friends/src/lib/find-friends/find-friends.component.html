@@ -1,0 +1,9 @@
+<ng-container *ngIf="findableFriends$ | async as findableFriends">
+  <h3>Here's some new friends you could make:</h3>
+  <ol>
+    <li *ngFor="let findableFriend of findableFriends">
+      {{ findableFriend.name }}
+      <button e2e-tag="request-add-friend">Request Add Friend!!</button>
+    </li>
+  </ol>
+</ng-container>

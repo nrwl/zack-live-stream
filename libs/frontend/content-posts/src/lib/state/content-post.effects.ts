@@ -9,6 +9,7 @@ import {
   getContentPostsSucceeds,
   getContentPostsFails,
   loginSucceeded,
+  initializedWithUser,
 } from '@zack-live-stream/frontend/our-circle-ngrx-utils';
 import { map, catchError, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -36,7 +37,7 @@ export class ContentPostEffects {
 
   initContentPostList$ = createEffect(() =>
     this._actions.pipe(
-      ofType(loginSucceeded),
+      ofType(loginSucceeded, initializedWithUser),
       switchMap(() =>
         this._contentPostService.getContentPosts().pipe(
           map(

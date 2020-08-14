@@ -8,8 +8,9 @@ import {
   submitLogout,
   logoutSucceeded,
   logoutFailed,
+  initializedWithUser,
 } from '@zack-live-stream/frontend/auth-ngrx-utils';
-import { switchMap, catchError, map, tap } from 'rxjs/operators';
+import { switchMap, catchError, map, tap, filter } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 @Injectable()
@@ -52,4 +53,15 @@ export class AuthEffects {
       ),
     { dispatch: false }
   );
+
+  getUserOnAuthInit$ = createEffect(() => {
+    return of({}).pipe(
+      filter(() => !!this._authService.getAccessToken()),
+      switchMap(() =>
+        this._authService
+          .getUser()
+          .pipe(map((user) => initializedWithUser({ user })))
+      )
+    );
+  });
 }

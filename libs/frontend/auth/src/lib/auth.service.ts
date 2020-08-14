@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {
   LoginRequestBody,
   LoginResponseBody,
+  User,
 } from '@zack-live-stream/auth-utils';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -28,6 +29,10 @@ export class AuthService {
 
   logout(): Observable<void> {
     return this._httpClient.post<void>('/api/auth/logout', {});
+  }
+
+  getUser(): Observable<User> {
+    return this._httpClient.get<User>('/api/auth/user');
   }
 
   getAccessToken() {

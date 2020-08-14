@@ -7,13 +7,17 @@ import {
   submitLogout,
   logoutFailed,
   logoutSucceeded,
+  initializedWithUser,
 } from '@zack-live-stream/frontend/auth-ngrx-utils';
 
 export const reducer = createReducer<AuthState>(
   { loggedIn: 'not attempted', user: null },
   on(submitLoginForm, () => ({ loggedIn: 'pending', user: null })),
   on(loginFailed, () => ({ loggedIn: 'not attempted', user: null })),
-  on(loginSucceeded, (_state, { user }) => ({ loggedIn: 'logged in', user })),
+  on(loginSucceeded, initializedWithUser, (_state, { user }) => ({
+    loggedIn: 'logged in',
+    user,
+  })),
   on(logoutFailed, logoutSucceeded, () => ({
     loggedIn: 'not attempted',
     user: null,

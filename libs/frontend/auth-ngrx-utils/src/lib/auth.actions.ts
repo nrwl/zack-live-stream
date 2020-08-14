@@ -18,3 +18,8 @@ export const submitLogout = createAction('[User] Logout');
 export const logoutFailed = createAction('[Auth API] Logout Failed');
 
 export const logoutSucceeded = createAction('[Auth API] Logout Succeeded');
+
+export const initializedWithUser = createAction(
+  '[Auth API] Initialize with User',
+  props<{ user: User }>()
+);

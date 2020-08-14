@@ -6,6 +6,7 @@ import { reducer } from './state/user.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './state/user.effects';
 import { FriendService } from './friend.service';
+import { FindFriendsComponent } from './find-friends/find-friends.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,7 @@ import { FriendService } from './friend.service';
     EffectsModule.forFeature([UserEffects]),
   ],
   providers: [FriendService],
-  declarations: [FriendListComponent],
-  exports: [FriendListComponent],
+  declarations: [FriendListComponent, FindFriendsComponent],
+  exports: [FriendListComponent, FindFriendsComponent],
 })
 export class FrontendFriendsModule {}

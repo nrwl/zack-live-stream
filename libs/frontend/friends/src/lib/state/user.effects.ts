@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import {
+  initializedWithUser,
   loginSucceeded,
-  retrieveFriendsSucceeded,
   retrieveFriendsFailed,
+  retrieveFriendsSucceeded,
 } from '@zack-live-stream/frontend/our-circle-ngrx-utils';
-import { switchMap, map, catchError } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
-import { User } from '@zack-live-stream/auth-utils';
+import { of } from 'rxjs';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import { FriendService } from '../friend.service';
 
 @Injectable()
@@ -19,10 +19,16 @@ export class UserEffects {
 
   getFriendsAfterLoggingIn$ = createEffect(() => {
     return this._actions$.pipe(
-      ofType(loginSucceeded),
+      ofType(loginSucceeded, initializedWithUser),
       switchMap(() =>
         this.friendService.getFriends().pipe(
-          map((users) => retrieveFriendsSucceeded({ friends: users })),
+          map(({ friends, findableFriends, friendRequests }) =>
+            retrieveFriendsSucceeded({
+              friends,
+              findableFriends,
+              friendRequests,
+            })
+          ),
           catchError(() => of(retrieveFriendsFailed()))
         )
       )
