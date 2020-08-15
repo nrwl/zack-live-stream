@@ -1,0 +1,14 @@
+<ng-container *ngIf="incomingRequests$ | async as friends">
+  <h3>Incoming Requests</h3>
+  <ul>
+    <li *ngFor="let friend of friends">
+      {{ friend.name }} has requested your friendship!!!!
+      <button
+        e2e-tag="approve-friendship"
+        (click)="approveFriendship(friend.id)"
+      >
+        Approve!
+      </button>
+    </li>
+  </ul>
+</ng-container>

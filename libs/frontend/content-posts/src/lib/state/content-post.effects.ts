@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
-import { ContentPostService } from '../content-post.service';
-import { createEffect, Actions, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import {
-  requestCreateNewContentPost,
-  createNewContentPostSucceeds,
   createNewContentPostFails,
-  initContentPostList,
-  getContentPostsSucceeds,
+  createNewContentPostSucceeds,
   getContentPostsFails,
-  loginSucceeded,
+  getContentPostsSucceeds,
   initializedWithUser,
+  requestCreateNewContentPost,
+  retrieveFriendsSucceeded,
 } from '@zack-live-stream/frontend/our-circle-ngrx-utils';
-import { map, catchError, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { catchError, map, switchMap } from 'rxjs/operators';
+import { ContentPostService } from '../content-post.service';
 
 @Injectable()
 export class ContentPostEffects {
@@ -37,7 +36,7 @@ export class ContentPostEffects {
 
   initContentPostList$ = createEffect(() =>
     this._actions.pipe(
-      ofType(loginSucceeded, initializedWithUser),
+      ofType(initializedWithUser, retrieveFriendsSucceeded),
       switchMap(() =>
         this._contentPostService.getContentPosts().pipe(
           map(

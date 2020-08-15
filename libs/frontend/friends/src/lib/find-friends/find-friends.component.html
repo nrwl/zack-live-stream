@@ -3,7 +3,12 @@
   <ol>
     <li *ngFor="let findableFriend of findableFriends">
       {{ findableFriend.name }}
-      <button e2e-tag="request-add-friend">Request Add Friend!!</button>
+      <button
+        e2e-tag="request-add-friend"
+        (click)="requestFriendship(findableFriend.id)"
+      >
+        Request Add Friend!!
+      </button>
     </li>
   </ol>
 </ng-container>

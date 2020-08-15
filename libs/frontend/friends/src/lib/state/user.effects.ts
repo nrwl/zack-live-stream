@@ -5,6 +5,8 @@ import {
   loginSucceeded,
   retrieveFriendsFailed,
   retrieveFriendsSucceeded,
+  userRequestsNewFriendship,
+  approveFriendship,
 } from '@zack-live-stream/frontend/our-circle-ngrx-utils';
 import { of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
@@ -22,13 +24,31 @@ export class UserEffects {
       ofType(loginSucceeded, initializedWithUser),
       switchMap(() =>
         this.friendService.getFriends().pipe(
-          map(({ friends, findableFriends, friendRequests }) =>
-            retrieveFriendsSucceeded({
-              friends,
-              findableFriends,
-              friendRequests,
-            })
-          ),
+          map(retrieveFriendsSucceeded),
+          catchError(() => of(retrieveFriendsFailed()))
+        )
+      )
+    );
+  });
+
+  requestFriendships$ = createEffect(() => {
+    return this._actions$.pipe(
+      ofType(userRequestsNewFriendship),
+      switchMap(({ userId }) =>
+        this.friendService.requestAddFriend(userId).pipe(
+          map(retrieveFriendsSucceeded),
+          catchError(() => of(retrieveFriendsFailed()))
+        )
+      )
+    );
+  });
+
+  approveFriendships$ = createEffect(() => {
+    return this._actions$.pipe(
+      ofType(approveFriendship),
+      switchMap(({ userId }) =>
+        this.friendService.approveFriend(userId).pipe(
+          map(retrieveFriendsSucceeded),
           catchError(() => of(retrieveFriendsFailed()))
         )
       )

@@ -19,9 +19,14 @@ export const selectFindableFriendIds = createSelector(
   (state) => state.findableFriendIds
 );
 
-export const selectFriendRequestIds = createSelector(
+export const selectPendingRequestIds = createSelector(
   usersState,
-  (state) => state.friendRequestIds
+  (state) => state.pendingRequestIds
+);
+
+export const selectIncomingRequestIds = createSelector(
+  usersState,
+  (state) => state.incomingRequestIds
 );
 
 export const selectFriends = createSelector(
@@ -44,12 +49,22 @@ export const selectFindableFriends = createSelector(
       .filter((user) => !!findableFriendIds[user.id])
 );
 
-export const selectFriendRequests = createSelector(
+export const selectPendingRequests = createSelector(
   selectAllUsers,
   selectLoggedInUser,
-  selectFriendRequestIds,
-  (allUsers, loggedInUser, friendRequestIds) =>
+  selectPendingRequestIds,
+  (allUsers, loggedInUser, pendingRequestIds) =>
     allUsers
       .filter((user) => user.id !== loggedInUser.id)
-      .filter((user) => !!friendRequestIds[user.id])
+      .filter((user) => !!pendingRequestIds[user.id])
+);
+
+export const selectIncomingRequests = createSelector(
+  selectAllUsers,
+  selectLoggedInUser,
+  selectIncomingRequestIds,
+  (allUsers, loggedInUser, incomingRequestIds) =>
+    allUsers
+      .filter((user) => user.id !== loggedInUser.id)
+      .filter((user) => !!incomingRequestIds[user.id])
 );

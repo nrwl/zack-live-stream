@@ -11,7 +11,10 @@ export const reducer = createReducer(
   usersInitialState,
   on(
     retrieveFriendsSucceeded,
-    (state, { friends, findableFriends, friendRequests }) => {
+    (
+      state,
+      { friends, findableFriends, pendingRequests, incomingRequests }
+    ) => {
       const friendIds = friends.reduce((acc, friend) => {
         acc[friend.id] = true;
         return acc;
@@ -20,18 +23,26 @@ export const reducer = createReducer(
         acc[user.id] = true;
         return acc;
       }, {});
-      const friendRequestIds = friendRequests.reduce((acc, user) => {
+      const pendingRequestIds = pendingRequests.reduce((acc, user) => {
+        acc[user.id] = true;
+        return acc;
+      }, {});
+      const incomingRequestIds = incomingRequests.reduce((acc, user) => {
         acc[user.id] = true;
         return acc;
       }, {});
       return {
         ...usersEntityAdapter.upsertMany(
-          friends.concat(findableFriends).concat(friendRequests),
+          friends
+            .concat(findableFriends)
+            .concat(pendingRequests)
+            .concat(incomingRequests),
           state
         ),
         friendIds,
         findableFriendIds,
-        friendRequestIds,
+        pendingRequestIds,
+        incomingRequestIds,
       };
     }
   ),

@@ -9,11 +9,13 @@ export interface UserState extends EntityState<User> {
   // additional entity state properties
   friendIds: Dictionary<boolean>;
   findableFriendIds: Dictionary<boolean>;
-  friendRequestIds: Dictionary<boolean>;
+  pendingRequestIds: Dictionary<boolean>;
+  incomingRequestIds: Dictionary<boolean>;
 }
 
 export const usersInitialState: UserState = usersEntityAdapter.getInitialState({
   friendIds: {},
   findableFriendIds: {},
-  friendRequestIds: {},
+  pendingRequestIds: {},
+  incomingRequestIds: {},
 });

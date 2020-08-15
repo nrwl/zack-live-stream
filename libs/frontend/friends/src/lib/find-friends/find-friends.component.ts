@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { User } from '@zack-live-stream/auth-utils';
-import { selectFindableFriends } from '@zack-live-stream/frontend/our-circle-ngrx-utils';
+import {
+  selectFindableFriends,
+  userRequestsNewFriendship,
+} from '@zack-live-stream/frontend/our-circle-ngrx-utils';
 
 @Component({
   selector: 'our-circle-find-friends',
@@ -15,4 +18,8 @@ export class FindFriendsComponent {
   );
 
   constructor(private store: Store) {}
+
+  requestFriendship(id: string) {
+    this.store.dispatch(userRequestsNewFriendship({ userId: id }));
+  }
 }

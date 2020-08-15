@@ -7,6 +7,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './state/user.effects';
 import { FriendService } from './friend.service';
 import { FindFriendsComponent } from './find-friends/find-friends.component';
+import { PendingFriendshipsComponent } from './pending-friendships/pending-friendships.component';
+import { IncomingRequestsComponent } from './incoming-requests/incoming-requests.component';
 
 @NgModule({
   imports: [
@@ -15,7 +17,7 @@ import { FindFriendsComponent } from './find-friends/find-friends.component';
     EffectsModule.forFeature([UserEffects]),
   ],
   providers: [FriendService],
-  declarations: [FriendListComponent, FindFriendsComponent],
-  exports: [FriendListComponent, FindFriendsComponent],
+  declarations: [FriendListComponent, FindFriendsComponent, PendingFriendshipsComponent, IncomingRequestsComponent],
+  exports: [FriendListComponent, FindFriendsComponent, PendingFriendshipsComponent, IncomingRequestsComponent],
 })
 export class FrontendFriendsModule {}

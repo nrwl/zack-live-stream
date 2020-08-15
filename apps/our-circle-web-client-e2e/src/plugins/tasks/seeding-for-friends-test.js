@@ -25,7 +25,7 @@ module.exports.seedingForFriendsTest = async function seedingForFriendsTest() {
   await mongo.collection('friendships').insertOne({
     requester: userId,
     requestee: friendId,
-    accepted: true,
+    accepted: 'accepted',
   });
   await mongo.collection('content-posts').insertOne({
     content: 'this should be visible',
