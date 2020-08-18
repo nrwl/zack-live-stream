@@ -1,4 +1,4 @@
-<ng-container *ngIf="pendingFriends$ | async as friends">
+<ng-container *ngrxLet="pendingFriends$ as friends">
   <h3>Pending Friends</h3>
   <ul>
     <li *ngFor="let friend of friends">{{ friend.name }} is pending...</li>

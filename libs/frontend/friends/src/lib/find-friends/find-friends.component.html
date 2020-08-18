@@ -1,4 +1,4 @@
-<ng-container *ngIf="findableFriends$ | async as findableFriends">
+<ng-container *ngrxLet="findableFriends$ as findableFriends">
   <h3>Here's some new friends you could make:</h3>
   <ol>
     <li *ngFor="let findableFriend of findableFriends">

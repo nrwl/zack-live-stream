@@ -8,6 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducer } from './state/content-post.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { ContentPostEffects } from './state/content-post.effects';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { ContentPostEffects } from './state/content-post.effects';
     ReactiveFormsModule,
     StoreModule.forFeature('content-posts', reducer),
     EffectsModule.forFeature([ContentPostEffects]),
+    ReactiveComponentModule,
   ],
   declarations: [ContentPostListComponent, CreateContentPostComponent],
   exports: [ContentPostListComponent, CreateContentPostComponent],

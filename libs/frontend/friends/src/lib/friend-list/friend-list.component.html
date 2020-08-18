@@ -1,4 +1,4 @@
-<ul *ngIf="friends$ | async as friends">
+<ul *ngrxLet="friends$ as friends">
   <li *ngFor="let friend of friends">
     {{ friend.name }}
   </li>

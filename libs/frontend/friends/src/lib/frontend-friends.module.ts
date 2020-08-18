@@ -9,15 +9,27 @@ import { FriendService } from './friend.service';
 import { FindFriendsComponent } from './find-friends/find-friends.component';
 import { PendingFriendshipsComponent } from './pending-friendships/pending-friendships.component';
 import { IncomingRequestsComponent } from './incoming-requests/incoming-requests.component';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 @NgModule({
   imports: [
     CommonModule,
     StoreModule.forFeature('users', reducer),
     EffectsModule.forFeature([UserEffects]),
+    ReactiveComponentModule,
   ],
   providers: [FriendService],
-  declarations: [FriendListComponent, FindFriendsComponent, PendingFriendshipsComponent, IncomingRequestsComponent],
-  exports: [FriendListComponent, FindFriendsComponent, PendingFriendshipsComponent, IncomingRequestsComponent],
+  declarations: [
+    FriendListComponent,
+    FindFriendsComponent,
+    PendingFriendshipsComponent,
+    IncomingRequestsComponent,
+  ],
+  exports: [
+    FriendListComponent,
+    FindFriendsComponent,
+    PendingFriendshipsComponent,
+    IncomingRequestsComponent,
+  ],
 })
 export class FrontendFriendsModule {}

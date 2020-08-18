@@ -1,6 +1,6 @@
 <h1>ToDos App</h1>
 
-<ng-container *ngIf="loggedIn$ | async as loggedIn">
+<ng-container *ngrxLet="loggedIn$ as loggedIn">
   <our-circle-login
     *ngIf="
       loggedIn === 'not attempted' || loggedIn === 'pending';
@@ -11,7 +11,7 @@
     <h2>{{ (user$ | async).name }}</h2>
     <button (click)="logout()">Logout</button>
   </ng-template>
-</ng-container>
-<ng-container *ngIf="(loggedIn$ | async) === 'logged in'">
-  <pre>{{ todos$ | async | json }}</pre>
+  <ng-container *ngIf="loggedIn === 'logged in'">
+    <pre>{{ todos$ | async | json }}</pre>
+  </ng-container>
 </ng-container>

@@ -7,6 +7,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FrontendAuthModule } from '@zack-live-stream/frontend/auth';
 import { FrontendFriendsModule } from '@zack-live-stream/frontend/friends';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,7 @@ import { FrontendFriendsModule } from '@zack-live-stream/frontend/friends';
     }),
     FrontendAuthModule,
     FrontendFriendsModule,
+    ReactiveComponentModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

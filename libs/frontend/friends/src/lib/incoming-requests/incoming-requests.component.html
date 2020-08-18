@@ -1,4 +1,4 @@
-<ng-container *ngIf="incomingRequests$ | async as friends">
+<ng-container *ngrxLet="incomingRequests$ as friends">
   <h3>Incoming Requests</h3>
   <ul>
     <li *ngFor="let friend of friends">
