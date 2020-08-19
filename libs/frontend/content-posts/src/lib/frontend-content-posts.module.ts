@@ -9,6 +9,7 @@ import { reducer } from './state/content-post.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { ContentPostEffects } from './state/content-post.effects';
 import { ReactiveComponentModule } from '@ngrx/component';
+import { ContentPostComponent } from './content-post/content-post.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,7 @@ import { ReactiveComponentModule } from '@ngrx/component';
     EffectsModule.forFeature([ContentPostEffects]),
     ReactiveComponentModule,
   ],
-  declarations: [ContentPostListComponent, CreateContentPostComponent],
+  declarations: [ContentPostListComponent, CreateContentPostComponent, ContentPostComponent],
   exports: [ContentPostListComponent, CreateContentPostComponent],
 })
 export class FrontendContentPostsModule {}

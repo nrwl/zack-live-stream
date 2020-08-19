@@ -1,1 +1,5 @@
-<pre>{{ list$ | ngrxPush | json }}</pre>
+<our-circle-content-post
+  *ngFor="let post of list$ | ngrxPush"
+  [contentPost]="post"
+>
+</our-circle-content-post>

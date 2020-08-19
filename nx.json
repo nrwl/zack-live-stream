@@ -83,6 +83,16 @@
     },
     "friendship-utils": {
       "tags": []
+    },
+    "frontend-forms": {
+      "tags": []
+    },
+    "forms-test-bed": {
+      "tags": []
+    },
+    "forms-test-bed-e2e": {
+      "tags": [],
+      "implicitDependencies": ["forms-test-bed"]
     }
   }
 }

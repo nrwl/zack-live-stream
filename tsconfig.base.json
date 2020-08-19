@@ -46,7 +46,8 @@
       ],
       "@zack-live-stream/friendship-utils": [
         "libs/friendship-utils/src/index.ts"
-      ]
+      ],
+      "@zack-live-stream/frontend/forms": ["libs/frontend/forms/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
