@@ -1,1 +1,33 @@
-<p>pagination works!</p>
+<div>
+  <button>Previous</button>
+  <button>Next</button>
+</div>
+
+<div *ngrxLet="paginationOptions$ as paginationOptions">
+  <button
+    e2e-tag="first-button"
+    *ngIf="paginationOptions[0] !== 1"
+    (click)="selectPage(1)"
+  >
+    1{{ paginationOptions[0] === 2 ? '' : '...' }}
+  </button>
+  <button
+    class="pagination-option"
+    *ngFor="let option of paginationOptions"
+    [class.selected]="currentPageControl.value === option"
+    (click)="selectPage(option)"
+  >
+    {{ option }}
+  </button>
+  <button
+    e2e-tag="last-button"
+    *ngIf="paginationOptions[paginationOptions.length - 1] !== totalPages"
+    (click)="selectPage(totalPages)"
+  >
+    {{
+      paginationOptions[paginationOptions.length - 1] === totalPages - 1
+        ? ''
+        : '...'
+    }}{{ totalPages }}
+  </button>
+</div>

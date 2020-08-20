@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { FrontendFormsModule } from '@zack-live-stream/frontend/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -11,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     FrontendFormsModule,
+    ReactiveComponentModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -34,6 +34,10 @@ export class PaginationComponent
   paginationOptions$: Observable<number[]>;
   currentPageControl: FormControl;
 
+  selectPage(page: number) {
+    this.currentPageControl.setValue(page);
+  }
+
   writeValue(value: number) {
     if (this.currentPageControl) {
       this.currentPageControl.setValue(value);
