@@ -11,7 +11,7 @@ import {
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 import { combineLatest, Observable, ReplaySubject, Subject } from 'rxjs';
-import { map, startWith, takeUntil } from 'rxjs/operators';
+import { filter, map, startWith, takeUntil } from 'rxjs/operators';
 import { createPaginationOptions } from './create-pagination-options.function';
 
 @Component({
@@ -53,7 +53,18 @@ export class PaginationComponent
           createPaginationOptions(currentPage, totalPages)
         )
       );
-      // TODO: subscribe to ensure that current value is always at least equal to totalPages (not greater than)
+      this._totalPages$
+        .pipe(
+          takeUntil(this._destroy$),
+          filter((x) => x !== null)
+        )
+        .subscribe((totalPages) => {
+          console.log('totalPages: ', totalPages);
+          console.log('form value: ', this.currentPageControl.value);
+          if (totalPages < this.currentPageControl.value) {
+            this.currentPageControl.setValue(totalPages);
+          }
+        });
     }
   }
 

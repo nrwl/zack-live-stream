@@ -1,6 +1,17 @@
 <div>
-  <button>Previous</button>
-  <button>Next</button>
+  <!-- NOTE: should use _totalPages$ ReplaySubject rather than the totalPages Input as source of truth-->
+  <button
+    (click)="selectPage(currentPageControl.value - 1)"
+    [disabled]="currentPageControl.value === 1"
+  >
+    Previous
+  </button>
+  <button
+    (click)="selectPage(currentPageControl.value + 1)"
+    [disabled]="currentPageControl.value === totalPages"
+  >
+    Next
+  </button>
 </div>
 
 <div *ngrxLet="paginationOptions$ as paginationOptions">

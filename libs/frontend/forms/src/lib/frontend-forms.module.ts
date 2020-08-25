@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PaginationComponent } from './pagination/pagination.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReactiveComponentModule } from '@ngrx/component';
+import { PaginatorComponent } from './paginator/paginator.component';
 
 @NgModule({
   imports: [
@@ -11,7 +12,7 @@ import { ReactiveComponentModule } from '@ngrx/component';
     ReactiveFormsModule,
     ReactiveComponentModule,
   ],
-  declarations: [PaginationComponent],
-  exports: [PaginationComponent],
+  declarations: [PaginationComponent, PaginatorComponent],
+  exports: [PaginationComponent, PaginatorComponent],
 })
 export class FrontendFormsModule {}

@@ -1,13 +1,6 @@
-<zack-live-stream-pagination
-  [formControl]="pageControl"
-  [totalPages]="totalPages$ | ngrxPush"
-></zack-live-stream-pagination>
+<ul>
+  <a routerLink="pagination"><li>Pagination</li> </a>
+  <a routerLink="paginator"><li>Paginator</li> </a>
+</ul>
 
-<hr />
-
-<label for="totalPages">Total Pages:</label>
-<input type="number" id="totalPages" [formControl]="totalPagesControl" />
-
-<hr />
-
-<div e2e-tag="value">Value: {{ pageControl.value }}</div>
+<router-outlet></router-outlet>
